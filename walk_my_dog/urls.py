@@ -6,5 +6,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('walk_my_dog.app_auth.urls')),
+    path('', include('walk_my_dog.common.urls')),
 
 ]
