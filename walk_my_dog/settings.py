@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'walk_my_dog.app_auth',
+    'walk_my_dog.walkmydog_auth',
 
 ]
 
@@ -135,4 +135,4 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'app_auth.WalkMyDogUser'
+AUTH_USER_MODEL = 'walkmydog_auth.WalkMyDogUser'
