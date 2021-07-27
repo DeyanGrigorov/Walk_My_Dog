@@ -3,28 +3,28 @@ from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.db import models
+
+from walk_my_dog.walkmydog_auth.models import Profile, WalkMyDogUser
 
 UserModel = get_user_model()
 
 
 class SignUpForm(UserCreationForm):
-    User_type = [
-        ('Dog owner', 'Dog owner'),
-        ('Dog walker', 'Dog walker')
 
-    ]
+    #
+    # user_type = (
+    #     forms.MultipleChoiceField(
+    #         choices=User_type,
+    #         required=False,
+    #     )
+    # )
 
-    user_type = (
-        forms.MultipleChoiceField(
-            choices=User_type,
-            widget=forms.CheckboxSelectMultiple(),
-        )
-    )
+    # def clean_user_type(self):
+    #     if len(self.cleaned_data['user_type']) > 1:
+    #         raise forms.ValidationError('Select no more than 1.')
+    #     return self.cleaned_data['user_type']
 
-    def clean_user_type(self):
-        if len(self.cleaned_data['user_type']) > 1:
-            raise forms.ValidationError('Select no more than 1.')
-        return self.cleaned_data['user_type']
 
     first_name = forms.CharField(
         max_length=30,
@@ -41,8 +41,8 @@ class SignUpForm(UserCreationForm):
     )
 
     class Meta:
-        model = UserModel
-        fields = ("first_name", "last_name", "email", "city", 'user_type' ,"password1", "password2")
+        model = WalkMyDogUser
+        fields = ("first_name", "last_name", "email", "city","category", "password1", "password2")
 
 
 class LoginForm(forms.Form):
@@ -65,3 +65,15 @@ class LoginForm(forms.Form):
 
     def save(self):
         return self.user
+
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = WalkMyDogUser
+        fields = ('first_name', 'last_name', 'city')
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('first_name', 'last_name', 'city', 'profile_image')

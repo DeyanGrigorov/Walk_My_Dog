@@ -4,17 +4,27 @@ from django.core.exceptions import ValidationError
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from walk_my_dog.walkmydog_auth.models import Profile
+from walk_my_dog.walkmydog_auth.models import Profile, WalkMyDogUser
 
 UserModel = get_user_model()
 
+#
+# @receiver(post_save, sender=UserModel)
+# def user_created(sender, instance, created, **kwargs):
+#     if created:
+#         profile = Profile(
+#             user=instance,
+#
+#         )
+#
+#         profile.save()
 
 @receiver(post_save, sender=UserModel)
-def user_created(sender, instance, created, **kwargs):
+def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        profile = Profile(
-            user=instance,
+        Profile.objects.create(user=instance)
 
-        )
 
-        profile.save()
+@receiver(post_save, sender=UserModel)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()

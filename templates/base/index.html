@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>WalkMyDog</title>
-{# <link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">#}
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:2%">
@@ -18,8 +18,7 @@
             <ul class="navbar-nav">
                 <li><a class="nav-link" href="{% url 'landing page' %}">Home</a></li>
                  {% if request.user.is_authenticated %}
-                     <li><a class="nav-link" href="{% url "sign up user" %}">Sign up</a></li>
-                      <a class="nav-link" href="url to profile">Hello, {{ request.user.first_name }}</a>
+                      <a class="nav-link" href="{% url 'profile details' %}">Hello, {{ request.user.first_name }}</a>
                  <li><a class="nav-link" href="{% url "sign out user" %}">Sign out</a></li>
                 {% else %}
                      <li><a class="nav-link" href="{% url "sign up user" %}">Sign up</a></li>
