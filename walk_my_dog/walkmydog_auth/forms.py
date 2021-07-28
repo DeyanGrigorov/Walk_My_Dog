@@ -5,44 +5,15 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from walk_my_dog.walkmydog_auth.models import Profile, WalkMyDogUser
+from walk_my_dog.walkmydog_auth.models import WalkMyDogUser
 
 UserModel = get_user_model()
 
 
 class SignUpForm(UserCreationForm):
-
-    #
-    # user_type = (
-    #     forms.MultipleChoiceField(
-    #         choices=User_type,
-    #         required=False,
-    #     )
-    # )
-
-    # def clean_user_type(self):
-    #     if len(self.cleaned_data['user_type']) > 1:
-    #         raise forms.ValidationError('Select no more than 1.')
-    #     return self.cleaned_data['user_type']
-
-
-    first_name = forms.CharField(
-        max_length=30,
-    )
-
-    last_name = forms.CharField(
-        max_length=30,
-    )
-
-    email = forms.EmailField()
-
-    city = forms.CharField(
-        max_length=50,
-    )
-
     class Meta:
         model = WalkMyDogUser
-        fields = ("first_name", "last_name", "email", "city","category", "password1", "password2")
+        fields = ("first_name", "last_name", "email", "city", "category", "password1", "password2")
 
 
 class LoginForm(forms.Form):
@@ -72,8 +43,10 @@ class UserForm(forms.ModelForm):
         model = WalkMyDogUser
         fields = ('first_name', 'last_name', 'city')
 
-
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ('first_name', 'last_name', 'city', 'profile_image')
+# class ProfileForm(forms.ModelForm):
+#     first_name = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+#     last_name = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+#     category = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+#     class Meta:
+#         model = Profile
+#         fields = ('first_name', 'last_name', 'city', 'profile_image', 'category')

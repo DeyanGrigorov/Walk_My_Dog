@@ -14,7 +14,7 @@ class WalkMyDogUserAdmin(UserAdmin):
 
     fieldsets = (
         (None, {'fields': ('password',)}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'email', 'city',)}),
+        ('Personal info', {'fields': ('first_name', 'last_name', 'email', 'city')}),
         ('Permissions', {
             'fields': ('is_staff', 'is_superuser', 'category', 'groups', 'user_permissions',),
         }),

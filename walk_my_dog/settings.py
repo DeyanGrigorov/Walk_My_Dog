@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'walk_my_dog.walkmydog_auth',
+    'walk_my_dog.profiles_render',
+    'walk_my_dog.common',
+    'walk_my_dog.profile_auth',
 
 ]
 
