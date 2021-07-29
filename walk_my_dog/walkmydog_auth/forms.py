@@ -7,8 +7,6 @@ from django.db import models
 
 from walk_my_dog.walkmydog_auth.models import WalkMyDogUser
 
-UserModel = get_user_model()
-
 
 class SignUpForm(UserCreationForm):
     class Meta:

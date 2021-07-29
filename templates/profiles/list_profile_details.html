@@ -1,0 +1,26 @@
+{% extends 'base/index.html' %}
+{% load static %}
+{% block content %}
+    <div class="d-flex">
+        <div class="d-inline p-2 w-50">
+            {% if profile.profile_image %}
+                <img src="{{ profile.profile_image.url }}" class="w-50 rounded mx-auto d-block" alt="No image">
+            {% else %}
+                <img src="{% static 'default_image/profile.jpg' %}" alt="" width="140" height="140">
+            {% endif %}
+        </div>
+        <div class="d-inline p-2 w-50">
+            <div class="d-flex justify-content-between">
+                <h5><u>First name:</u> {{ profile.first_name }}</h5>
+                <h5><u>Last name:</u> {{ profile.last_name }}</h5>
+                <h5><u>city:</u> {{ profile.city }}</h5>
+                <h5><u>age:</u> {{ profile.age }}</h5>
+                <h5><u>Contact:</u> {{ profile.phone_number }}</h5>
+            </div>
+            {#                <p class="mt-2">Description: {{ pet.description }}</p>#}
+            <div>
+                <a href="{% url 'landing page' %}" class="btn btn-success">Back to Home</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

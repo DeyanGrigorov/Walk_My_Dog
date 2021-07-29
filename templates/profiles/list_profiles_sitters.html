@@ -2,8 +2,11 @@
 {% load static %}
 
 {% block content %}
+    {% if DogSitter %}
      <h1 class='text-center'>ALL PROFILES</h1>
      <div class="row">
+
+
             {% for dogsitter in DogSitter %}
             <div class="col-lg-4">
                 <div class="card" style="width: 18rem;">
@@ -14,11 +17,17 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ dogsitter.first_name }} {{ dogsitter.last_name }}, Location: {{ dogsitter.city }}, {{ dogsitter.category }}</h5>
-                        <a href="" class="btn btn-primary">See details</a>
+
+                        <a href="{% url 'list profile details' dogsitter.user_id %}" class="btn btn-primary">See details</a>
+
                     </div>
                 </div>
             </div>
 
+
             {% endfor %}
+         {% else %}
+         <h1 class='text-center'>NO PROFILES</h1>
+     {% endif %}
     </div>
 {% endblock %}

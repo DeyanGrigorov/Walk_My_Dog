@@ -14,9 +14,9 @@ class WalkMyDogUserAdmin(UserAdmin):
 
     fieldsets = (
         (None, {'fields': ('password',)}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'email', 'city')}),
+        ('Personal info', {'fields': ('first_name', 'last_name', 'email', 'city', 'category')}),
         ('Permissions', {
-            'fields': ('is_staff', 'is_superuser', 'category', 'groups', 'user_permissions',),
+            'fields': ('is_staff', 'is_superuser', 'groups', 'user_permissions',),
         }),
         ('Important dates', {'fields': ('last_login', 'date_created',)}),)
 
@@ -27,4 +27,4 @@ class WalkMyDogUserAdmin(UserAdmin):
         }),
     )
 
-    readonly_fields = ('date_created',)
+    readonly_fields = ('date_created', 'first_name', 'last_name', 'email', 'city', 'category')

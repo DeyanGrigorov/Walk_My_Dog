@@ -1,0 +1,13 @@
+{% extends 'base/index.html' %}
+
+{% block content %}
+    {% if not request.user.is_authenticated %}
+ <a href="{% url 'sign up user' %}" class="btn btn-primary">Get started</a>
+    {% else %}
+        <h1>Find what you need</h1>
+        <a href="{% url 'list profiles owners' %}" class="btn btn-primary">Dog owners</a>
+        <a href="{% url 'list profiles sitters' %}" class="btn btn-primary">Dog Sitters</a>
+    {% endif %}
+{% endblock %}
+
+

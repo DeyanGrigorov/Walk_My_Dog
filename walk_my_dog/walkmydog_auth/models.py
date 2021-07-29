@@ -29,6 +29,10 @@ class WalkMyDogUser(AbstractBaseUser, PermissionsMixin):
         unique=True,
     )
 
+    age = models.IntegerField(null=True, blank=True)
+
+    phone_number = models.IntegerField(null=True, blank=True)
+
     is_staff = models.BooleanField(
         default=False,
     )
@@ -40,6 +44,6 @@ class WalkMyDogUser(AbstractBaseUser, PermissionsMixin):
     objects = WalkMyDogUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['city', 'first_name', 'last_name', ]
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'category', ]
 
 

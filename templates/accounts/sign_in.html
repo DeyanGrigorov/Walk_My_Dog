@@ -1,12 +1,21 @@
-{% extends 'base/index.html' %}
+{% extends 'base/Index.html' %}
+{% load static %}
 
 {% block content %}
-<div class="container">
-    <form class="w-50 m-auto" method="post" style="border: 1px solid grey; margin: 10% 0%; padding: 5% 5%" action="{% url 'sign in user' %}">
-      <h2>Sign in</h2>
+
+
+    <form class="form-login" method="post" action="{% url 'sign in user' %}">
+
         {% csrf_token %}
         {{ form }}
-      <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+
+
     </form>
-</div>
+
+
+{% endblock %}
+{% block main-content %}
+{% endblock %}
+{% block footer %}
 {% endblock %}

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'walk_my_dog.profiles_render',
     'walk_my_dog.common',
     'walk_my_dog.profile_auth',
+    'walk_my_dog.info',
 
 ]
 

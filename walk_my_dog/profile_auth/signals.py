@@ -19,5 +19,7 @@ def user_created(sender, instance, created, **kwargs):
         profile.last_name = instance.last_name
         profile.city = instance.city
         profile.category = instance.category
+        profile.age = instance.age
+        profile.phone_number = instance.phone_number
 
         profile.save()
