@@ -1,14 +1,60 @@
 from django import forms
-from django.contrib.auth import authenticate, get_user_model
+from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.db import models
 
 from walk_my_dog.walkmydog_auth.models import WalkMyDogUser
 
 
 class SignUpForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].label = "password"
+        self.fields['password2'].label = "confirm password"
+
+    first_name = forms.CharField(
+        widget=forms.TextInput
+            (
+            attrs={
+                'class': "form-row",
+            }
+        )
+    )
+
+    last_name = forms.CharField(
+        widget=forms.TextInput
+            (
+            attrs={'class': "form-row"}
+        )
+    )
+    email = forms.CharField(
+        widget=forms.EmailInput
+            (
+            attrs={'class': "form-row"}
+        )
+    )
+    #
+    city = forms.CharField(
+        widget=forms.TextInput
+            (
+            attrs={'class': "form-row"}
+        )
+    )
+
+    password1 = forms.CharField(
+        widget=forms.PasswordInput
+            (
+            attrs={'class': "form-row"}
+        ))
+
+    password2 = forms.CharField(
+        widget=forms.PasswordInput
+            (
+
+            attrs={'class': "form-row"}
+        )
+    )
+
     class Meta:
         model = WalkMyDogUser
         fields = ("first_name", "last_name", "email", "city", "category", "password1", "password2")
@@ -40,11 +86,3 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = WalkMyDogUser
         fields = ('first_name', 'last_name', 'city')
-
-# class ProfileForm(forms.ModelForm):
-#     first_name = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-#     last_name = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-#     category = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-#     class Meta:
-#         model = Profile
-#         fields = ('first_name', 'last_name', 'city', 'profile_image', 'category')

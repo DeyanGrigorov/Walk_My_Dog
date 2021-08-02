@@ -15,7 +15,9 @@ def sign_in_user(request):
             login(request, user)
             return redirect('landing page')
     else:
+
         form = LoginForm
+
     context = {
         'form': form,
     }
@@ -29,11 +31,9 @@ def sign_up_user(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, 'Sign up successful.')
-            return redirect('landing page')
-        messages.error(request, 'Unsuccessful sign up. Invalid information.')
+            return redirect('update profile')
     else:
-        form = SignUpForm()
+        form = SignUpForm
     context = {
         'form': form
     }

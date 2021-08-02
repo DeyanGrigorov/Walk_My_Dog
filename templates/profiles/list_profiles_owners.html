@@ -1,32 +1,111 @@
-{% extends 'base/index.html' %}
+{% extends 'base/Index.html' %}
 {% load static %}
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 {% block content %}
-    {% if DogOwner %}
-     <h1 class='text-center'>ALL PROFILES</h1>
-     <div class="row">
-
-
-            {% for dogowner in DogOwner %}
+    <header class="masthead" style="background-image: url('/static/assets/Dog-friend.jpg')">
+{% endblock %}
+{% block header %}
+    {% if page %}
+        <h1 class='text-center'>ALL PROFILES</h1>
+        <h2 class='text-center'>Page number: {{ page.number }}</h2>
+        <div class="row">
+        {% for dogowner in page.object_list %}
             <div class="col-lg-4">
-                <div class="card" style="width: 18rem;">
+                <div class="card-profile">
                     {% if dogowner.profile_image %}
-                        <img src="{{ dogowner.profile_image.url }}" class="card-img-top" alt="">
+                        <img src="{{ dogowner.profile_image.url }}" alt="John" style="float: left;
+    width:  300px;
+    height: 300px;
+    object-fit: cover;">
                     {% else %}
-                         <img src="{% static 'default_image/profile.jpg' %}" alt="" width="140" height="140">
+                        <img src="{% static 'default_image/profile.jpg' %}" alt="John" style="float: left;
+    width:  300px;
+    height: 300px;
+    object-fit: cover;">
                     {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ dogowner.first_name }} {{ dogowner.last_name }}, Location: {{ dogowner.city }}, {{ dogowner.category }}</h5>
-                        <a href="{% url 'list profile details' dogowner.user_id%}" class="btn btn-primary">See details</a>
-
-                    </div>
+                    <h1>{{ dogowner.first_name }} {{ dogowner.last_name }}</h1>
+                    <p class="title">{{ dogowner.category }}</p>
+                    <p>location: {{ dogowner.city }}</p>
+                    <p>
+                        <a href="{% url 'list profile details' dogowner.user_id %}"><button>Details</button></a>
+                    </p>
                 </div>
             </div>
-
-
-            {% endfor %}
-         {% else %}
-         <h1 class='text-center'>NO PROFILES</h1>
-     {% endif %}
+        {% endfor %}
+    {% else %}
+        <h1 class='text-center'>NO PROFILES</h1>
+    {% endif %}
+</div>
+    <div class="page-link">
+    {% if page.has_previous %}
+    <a href="{% url 'list profiles owners' %}?page={{ page.previous_page_number }}">Previous page</a>
+    {% endif %}
+    {% if page.has_next %}
+    <a href="{% url 'list profiles owners' %}?page={{ page.next_page_number }}">Next page</a>
+    {% endif %}
     </div>
+    {##}
+    {##}
+    {#        {% if DogOwner %}#}
+    {#     <h1 class='text-center'>ALL PROFILES</h1>#}
+    {#     <div class="row">#}
+    {##}
+    {##}
+    {#            {% for dogowner in DogOwner %}#}
+    {#            <div class="col-lg-4">#}
+    {#                <div class="card" style="width: 18rem;">#}
+    {#                    {% if dogowner.profile_image %}#}
+    {#                        <img src="{{ dogowner.profile_image.url }}" class="card-img-top" alt="">#}
+    {#                    {% else %}#}
+    {#                         <img src="{% static 'default_image/profile.jpg' %}" class="card-img-top" alt="">#}
+    {#                    {% endif %}#}
+    {#                    <div class="card-body">#}
+    {#                        <h5 class="card-title">{{ dogowner.first_name }} {{ dogowner.last_name }}, Location: {{ dogowner.city }}, {{ dogowner.category }}</h5>#}
+    {#                        <a href="{% url 'list profile details' dogowner.user_id%}" class="btn btn-primary">See details</a>#}
+    {##}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {##}
+    {##}
+    {#            {% endfor %}#}
+    {#         {% else %}#}
+    {#         <h1 class='text-center'>NO PROFILES</h1>#}
+    {#     {% endif %}#}
+    {#    </div>#}
+
+
 {% endblock %}
+{% block main-content %}
+{% endblock %}
+</header>
+
+{#    {% if DogOwner %}#}
+{#     <h1 class='text-center'>ALL PROFILES</h1>#}
+{#     <div class="row">#}
+{##}
+{##}
+{#            {% for dogowner in DogOwner %}#}
+{#            <div class="col-lg-4">#}
+{#                <div class="card" style="width: 18rem;">#}
+{#                    {% if dogowner.profile_image %}#}
+{#                        <img src="{{ dogowner.profile_image.url }}" class="card-img-top" alt="">#}
+{#                    {% else %}#}
+{#                         <img src="{% static 'default_image/profile.jpg' %}" alt="" width="140" height="140">#}
+{#                    {% endif %}#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">{{ dogowner.first_name }} {{ dogowner.last_name }}, Location: {{ dogowner.city }}, {{ dogowner.category }}</h5>#}
+{#                        <a href="{% url 'list profile details' dogowner.user_id%}" class="btn btn-primary">See details</a>#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{##}
+{#            {% endfor %}#}
+{#         {% else %}#}
+{#         <h1 class='text-center'>NO PROFILES</h1>#}
+{#     {% endif %}#}
+{#    </div>#}
+{##}

@@ -1,12 +1,50 @@
-{% extends 'base/index.html' %}
+{% extends 'base/Index.html' %}
 
 {% block content %}
-<div class="container">
-    <form class="w-50 m-auto" method="post" style="border: 1px solid grey; margin: 10% 0%; padding: 5% 5%" action="{% url 'sign up user' %}">
-      <h2>Sign up</h2>
-        {% csrf_token %}
-        {{ form }}
-      <button type="submit" class="btn btn-primary">Sign up</button>
-    </form>
-</div>
+
+    <header class="masthead" style="background-image: url('/static/assets/dog_sitters.jpg')">
+
+    <div class="main-content">
+
+        <!-- You only need this form and the form-register.css -->
+
+        <form class="form-register" method="post" action="#">
+
+            <div class="form-register-with-email">
+
+                <div class="form-white-background">
+
+                    <div class="form-title-row">
+                        <h1>Create an account</h1>
+                    </div>
+
+                    <div class="form-row">
+                        {% csrf_token %}
+                        <label><span>{{ form.as_p }}</span></label>
+                    </div>
+
+                    <div class="form-row">
+                        <button style="display:inline-flex" type="submit">Register</button>
+                    </div>
+
+                </div>
+
+                <a href="{% url 'sign in user' %}" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
 {% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block main-content %}
+{% endblock %}
+
+

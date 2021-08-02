@@ -23,8 +23,8 @@ class WalkMyDogUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2'),
+            'fields': ('email', 'password1', 'password2', 'category'),
         }),
     )
 
-    readonly_fields = ('date_created', 'first_name', 'last_name', 'email', 'city', 'category')
+    readonly_fields = ('date_created', 'first_name', 'last_name', 'city',)

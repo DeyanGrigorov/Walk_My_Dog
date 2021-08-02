@@ -1,13 +1,55 @@
-{% extends 'base/index.html' %}
-
+{% extends 'base/Index.html' %}
 {% block content %}
-    {% if not request.user.is_authenticated %}
- <a href="{% url 'sign up user' %}" class="btn btn-primary">Get started</a>
-    {% else %}
-        <h1>Find what you need</h1>
-        <a href="{% url 'list profiles owners' %}" class="btn btn-primary">Dog owners</a>
-        <a href="{% url 'list profiles sitters' %}" class="btn btn-primary">Dog Sitters</a>
-    {% endif %}
+     <header class="masthead" style="background-image: url('/static/assets/silouete.jpg')">
+{% endblock %}
+{% block header %}
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="site-heading">
+                <h1>Good People For Your Dog</h1>
+                <span class="subheading">The Good App</span>
+            </div>
+            <div class="site-heading">
+                {% if not request.user.is_authenticated %}
+                    <span class="subheading"> <a href="{% url 'sign up user' %}" class="btn btn-primary">Get started</a></span>
+                {% else %}
+                    <h2>Find what you seek</h2>
+                    <a href="{% url 'list profiles owners' %}" class="btn btn-primary">Dog owners</a>
+                    <a href="{% url 'list profiles sitters' %}" class="btn btn-primary">Dog Sitters</a>
+                    </div>
+                {% endif %}
+        </div>
+    </div>
 {% endblock %}
 
 
+{% block main-content %}
+
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="">
+                        <h2 class="post-title">1. To join our community first sign up</h2>
+                        <h3 class="post-subtitle">Sign up to our app so you can find people.</h3>
+                    </a>
+
+                    <a href="{% url 'sign up user' %}">Click here to join us</a>
+                </div>
+
+                <div class="post-preview">
+                    <a href="">
+                        <h2 class="post-title">2. Now find what you seek</h2>
+                        <h3 class="post-subtitle">You can see the registered dog lovers with just one click from the
+                            buttons at the navigation panel.</h3>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+</header>

@@ -1,26 +1,69 @@
-{% extends 'base/index.html' %}
+{% extends 'base/Index.html' %}
 {% load static %}
 {% block content %}
-    <div class="d-flex">
-        <div class="d-inline p-2 w-50">
-            {% if profile.profile_image %}
-                <img src="{{ profile.profile_image.url }}" class="w-50 rounded mx-auto d-block" alt="No image">
-            {% else %}
-                <img src="{% static 'default_image/profile.jpg' %}" alt="" width="140" height="140">
-            {% endif %}
-        </div>
-        <div class="d-inline p-2 w-50">
-            <div class="d-flex justify-content-between">
-                <h5><u>First name:</u> {{ profile.first_name }}</h5>
-                <h5><u>Last name:</u> {{ profile.last_name }}</h5>
-                <h5><u>city:</u> {{ profile.city }}</h5>
-                <h5><u>age:</u> {{ profile.age }}</h5>
-                <h5><u>Contact:</u> {{ profile.phone_number }}</h5>
-            </div>
-            {#                <p class="mt-2">Description: {{ pet.description }}</p>#}
-            <div>
-                <a href="{% url 'landing page' %}" class="btn btn-success">Back to Home</a>
-            </div>
-        </div>
-    </div>
+    <header class="masthead" style="background-image: url('/static/assets/silouete.jpg')">
 {% endblock %}
+{% block header %}
+    <section class="profile">
+        <header class="header">
+            <div class="details">
+                {% if profile.profile_image %}
+                    <img src=" {{ profile.profile_image.url }}" alt='none' class="avatar">
+                {% else %}
+                    <img src="{% static 'default_image/profile.jpg' %}" alt='none' class="avatar">
+                {% endif %}
+                <h1 class="heading">{{ profile.first_name }} {{ profile.last_name }}</h1>
+                <div class="location">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12 ,2Z"></path>
+                    </svg>
+                    <p>{{ profile.city }}</p>
+                </div>
+                <div class="stats">
+                    <div class="col-4">
+                        <h4>age</h4>
+                        <p>{{ profile.age }}</p>
+                    </div>
+                    <div class="col-4">
+                        <h4>contact</h4>
+                        <p>{{ profile.phone_number }}</p>
+                    </div>
+                    <div class="col-4">
+                        <h4>category</h4>
+                        <p>{{ profile.category }}</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+
+{% endblock %}
+{% block main-content %}
+{% endblock %}
+</header>
+
+
+
+{#    <div class="d-flex">#}
+{#        <div class="d-inline p-2 w-50">#}
+{#            {% if profile.profile_image %}#}
+{#                <img src="{{ profile.profile_image.url }}" class="w-50 rounded mx-auto d-block" alt="No image">#}
+{#            {% else %}#}
+{#                <img src="{% static 'default_image/profile.jpg' %}" alt="" width="140" height="140">#}
+{#            {% endif %}#}
+{#        </div>#}
+{#        <div class="d-inline p-2 w-50">#}
+{#            <div class="d-flex justify-content-between">#}
+{#                <h5><u>First name:</u> {{ profile.first_name }}</h5>#}
+{#                <h5><u>Last name:</u> {{ profile.last_name }}</h5>#}
+{#                <h5><u>city:</u> {{ profile.city }}</h5>#}
+{#                <h5><u>age:</u> {{ profile.age }}</h5>#}
+{#                <h5><u>Contact:</u> {{ profile.phone_number }}</h5>#}
+{#                <h5><u>Category:</u> {{ profile.category }}</h5>#}
+{#            </div>#}
+{#                <p class="mt-2">Description: {{ pet.description }}</p>#}
+{#            <div>#}
+{#                <a href="{% url 'landing page' %}" class="btn btn-success">Back to Home</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}

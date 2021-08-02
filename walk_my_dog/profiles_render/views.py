@@ -1,14 +1,18 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
+from django.shortcuts import render
 
 from walk_my_dog.profile_auth.models import Profile
 
 
 def list_profiles_owners(request):
     dog_owners = Profile.objects.filter(category='Dog owner')
+    dog_owners_paginator = Paginator(dog_owners, 3)
+    page_num = request.GET.get('page')
+    page = dog_owners_paginator.get_page(page_num)
 
     context = {
-        'DogOwner': dog_owners,
+        'page': page,
     }
 
     return render(request, 'profiles/list_profiles_owners.html', context)
