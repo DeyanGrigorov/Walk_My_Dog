@@ -8,7 +8,6 @@
 {% block header %}
     {% if page %}
         <h1 class='text-center'>ALL PROFILES</h1>
-        <h2 class='text-center'>Page number: {{ page.number }}</h2>
         <div class="row">
         {% for dogsitter in page.object_list %}
             <div class="col-lg-4">
@@ -40,68 +39,32 @@
     {% else %}
         <h1 class='text-center'>NO PROFILES</h1>
     {% endif %}
-</div>
-    {##}
-    {##}
-    {#        {% if DogOwner %}#}
-    {#     <h1 class='text-center'>ALL PROFILES</h1>#}
-    {#     <div class="row">#}
-    {##}
-    {##}
-    {#            {% for dogowner in DogOwner %}#}
-    {#            <div class="col-lg-4">#}
-    {#                <div class="card" style="width: 18rem;">#}
-    {#                    {% if dogowner.profile_image %}#}
-    {#                        <img src="{{ dogowner.profile_image.url }}" class="card-img-top" alt="">#}
-    {#                    {% else %}#}
-    {#                         <img src="{% static 'default_image/profile.jpg' %}" class="card-img-top" alt="">#}
-    {#                    {% endif %}#}
-    {#                    <div class="card-body">#}
-    {#                        <h5 class="card-title">{{ dogowner.first_name }} {{ dogowner.last_name }}, Location: {{ dogowner.city }}, {{ dogowner.category }}</h5>#}
-    {#                        <a href="{% url 'list profile details' dogowner.user_id%}" class="btn btn-primary">See details</a>#}
-    {##}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {##}
-    {##}
-    {#            {% endfor %}#}
-    {#         {% else %}#}
-    {#         <h1 class='text-center'>NO PROFILES</h1>#}
-    {#     {% endif %}#}
-    {#    </div>#}
-
+    <div class="pagination">
+    {% if page.has_previous %}
+        <a class="pagination-action" href="?page=1">
+            <i class="fas fa-angle-double-left"></i>
+        </a>
+        <a class="pagination-action" href="?page={{ page.previous_page_number }}">
+            <i class="fas fa-angle-left"></i>
+        </a>
+    {% endif %}
+    {% for num in page.paginator.page_range %}
+        {% if page.number == num %}
+            <span class="pagination-number pagination-current">{{ num }}</span>
+        {% else %}
+            <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+    {% if page.has_next %}
+        <a class="pagination-action" href="?page={{ page.next_page_number }}">
+            <i class="fas fa-angle-right"></i>
+        </a>
+        <a class="pagination-action" href="?page={{ page.paginator.num_pages }}">
+            <i class="fas fa-angle-double-right"></i>
+        </a>
+    {% endif %}
 
 {% endblock %}
 {% block main-content %}
 {% endblock %}
 </header>
-
-{#    {% if DogOwner %}#}
-{#     <h1 class='text-center'>ALL PROFILES</h1>#}
-{#     <div class="row">#}
-{##}
-{##}
-{#            {% for dogowner in DogOwner %}#}
-{#            <div class="col-lg-4">#}
-{#                <div class="card" style="width: 18rem;">#}
-{#                    {% if dogowner.profile_image %}#}
-{#                        <img src="{{ dogowner.profile_image.url }}" class="card-img-top" alt="">#}
-{#                    {% else %}#}
-{#                         <img src="{% static 'default_image/profile.jpg' %}" alt="" width="140" height="140">#}
-{#                    {% endif %}#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">{{ dogowner.first_name }} {{ dogowner.last_name }}, Location: {{ dogowner.city }}, {{ dogowner.category }}</h5>#}
-{#                        <a href="{% url 'list profile details' dogowner.user_id%}" class="btn btn-primary">See details</a>#}
-{##}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{##}
-{#            {% endfor %}#}
-{#         {% else %}#}
-{#         <h1 class='text-center'>NO PROFILES</h1>#}
-{#     {% endif %}#}
-{#    </div>#}
-{##}

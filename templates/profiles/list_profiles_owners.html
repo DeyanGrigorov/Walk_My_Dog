@@ -7,8 +7,8 @@
 {% endblock %}
 {% block header %}
     {% if page %}
-        <h1 class='text-center'>ALL PROFILES</h1>
-        <h2 class='text-center'>Page number: {{ page.number }}</h2>
+        <h1 class='text-center'>All Dog Owners Profiles</h1>
+
         <div class="row">
         {% for dogowner in page.object_list %}
             <div class="col-lg-4">
@@ -40,16 +40,33 @@
     {% else %}
         <h1 class='text-center'>NO PROFILES</h1>
     {% endif %}
-</div>
-    <div class="page-link">
-        {% if page.has_previous %}
-            <a href="{% url 'list profiles owners' %}?page={{ page.previous_page_number }}">Previous page</a>
-        {% endif %}
-        {% if page.has_next %}
-            <a href="{% url 'list profiles owners' %}?page={{ page.next_page_number }}">Next page</a>
-        {% endif %}
-    </div>
 
+    <div class="pagination">
+        {% if page.has_previous %}
+            <a class="pagination-action" href="?page=1">
+                <i class="fas fa-angle-double-left"></i>
+            </a>
+            <a class="pagination-action" href="?page={{ page.previous_page_number }}">
+                <i class="fas fa-angle-left"></i>
+            </a>
+        {% endif %}
+        {% for num in page.paginator.page_range %}
+            {% if page.number == num %}
+                <span class="pagination-number pagination-current">{{ num }}</span>
+            {% else %}
+                <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page.has_next %}
+            <a class="pagination-action" href="?page={{ page.next_page_number }}">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            <a class="pagination-action" href="?page={{ page.paginator.num_pages }}">
+                <i class="fas fa-angle-double-right"></i>
+            </a>
+        {% endif %}
+
+    </div>
 
 {% endblock %}
 {% block main-content %}

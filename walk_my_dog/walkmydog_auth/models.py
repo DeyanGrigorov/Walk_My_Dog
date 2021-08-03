@@ -27,7 +27,7 @@ class WalkMyDogUser(AbstractBaseUser, PermissionsMixin):
     )
 
     last_name = models.CharField(
-        max_length=12,
+        max_length=13,
         validators=[validate_capitalized],
     )
 

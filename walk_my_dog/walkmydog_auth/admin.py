@@ -7,7 +7,7 @@ UserModel = get_user_model()
 
 @admin.register(UserModel)
 class WalkMyDogUserAdmin(UserAdmin):
-    list_display = ('email', 'is_staff')
+    list_display = ('email', 'is_staff', 'category')
     list_filter = ('is_staff', 'is_superuser', 'groups')
     search_fields = ('email',)
     ordering = ('email',)

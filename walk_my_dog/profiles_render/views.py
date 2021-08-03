@@ -24,7 +24,6 @@ def list_profiles_sitters(request):
     page_num = request.GET.get('page')
     page = dog_sitters_paginator.get_page(page_num)
 
-
     context = {
         'page': page,
     }

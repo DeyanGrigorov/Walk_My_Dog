@@ -22,7 +22,7 @@ class Profile(models.Model):
 
     first_name = models.CharField(max_length=12, blank=True)
 
-    last_name = models.CharField(max_length=12, blank=True)
+    last_name = models.CharField(max_length=13, blank=True)
 
     city = models.CharField(max_length=50, blank=True, null=True)
 
