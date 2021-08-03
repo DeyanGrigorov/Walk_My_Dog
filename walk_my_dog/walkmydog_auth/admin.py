@@ -27,4 +27,4 @@ class WalkMyDogUserAdmin(UserAdmin):
         }),
     )
 
-    readonly_fields = ('date_created', 'first_name', 'last_name', 'city',)
+    readonly_fields = ('date_created', 'first_name', 'last_name', 'city','category')

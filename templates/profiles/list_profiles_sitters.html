@@ -6,28 +6,33 @@
     <header class="masthead" style="background-image: url('/static/assets/Dog-friend.jpg')">
 {% endblock %}
 {% block header %}
-    {% if DogSitter %}
+    {% if page %}
         <h1 class='text-center'>ALL PROFILES</h1>
+        <h2 class='text-center'>Page number: {{ page.number }}</h2>
         <div class="row">
-        {% for dogsitter in DogSitter %}
+        {% for dogsitter in page.object_list %}
             <div class="col-lg-4">
                 <div class="card-profile">
                     {% if dogsitter.profile_image %}
-                        <img src="{{ dogsitter.profile_image.url }}" alt="John" style="float: left;
+                        <img src="{{ dogsitter.profile_image.url }}" alt="No photo" style="float: left;
     width:  300px;
     height: 300px;
-    object-fit: cover;">
+    object-fit: cover;
+    border-radius: 20px;">
                     {% else %}
-                        <img src="{% static 'default_image/profile.jpg' %}" alt="John" style="float: left;
+                        <img src="{% static 'default_image/profile.jpg' %}" alt="No photo" style="float: left;
     width:  300px;
     height: 300px;
-    object-fit: cover;">
+    object-fit: cover;
+    border-radius: 20px;">
                     {% endif %}
                     <h1>{{ dogsitter.first_name }} {{ dogsitter.last_name }}</h1>
                     <p class="title">{{ dogsitter.category }}</p>
-                    <p class="title">location:   {{ dogsitter.city }}</p>
+                    <p class="title">location: {{ dogsitter.city }}</p>
                     <p>
-                        <a href="{% url 'list profile details' dogsitter.user_id %}"><button>Details</button></a>
+                        <a href="{% url 'list profile details' dogsitter.user_id %}">
+                            <button>Details</button>
+                        </a>
                     </p>
                 </div>
             </div>

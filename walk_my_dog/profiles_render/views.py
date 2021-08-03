@@ -18,11 +18,15 @@ def list_profiles_owners(request):
     return render(request, 'profiles/list_profiles_owners.html', context)
 
 
-def list_profiles_walkers(request):
+def list_profiles_sitters(request):
     dog_sitters = Profile.objects.filter(category='Dog sitter')
+    dog_sitters_paginator = Paginator(dog_sitters, 3)
+    page_num = request.GET.get('page')
+    page = dog_sitters_paginator.get_page(page_num)
+
 
     context = {
-        'DogSitter': dog_sitters,
+        'page': page,
     }
 
     return render(request, 'profiles/list_profiles_sitters.html', context)

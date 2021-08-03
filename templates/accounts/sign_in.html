@@ -4,48 +4,52 @@
 
     <header class="masthead" style="background-image: url('/static/assets/beach-dogs.jpg')">
 
-    <form class="form-login" method="post" action="{% url 'sign in user' %}">
-        <div class="form-log-in-with-email">
-            {% csrf_token %}
-            <div class="form-white-background">
+        <form class="form-login" method="post" action="{% url 'sign in user' %}">
+            <div class="form-log-in-with-email">
+                {% csrf_token %}
+                <div class="form-white-background">
 
-                <div class="form-title-row">
-                    <h1>Sign in</h1>
-                </div>
+                    <div class="form-title-row">
+                        <h1>Sign in</h1>
+                    </div>
 
 
-                <div class="form-row">
-                    <label>
-                        <span>Email</span>
-                        <input type="email" name="email">
-                    </label>
-                </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Email</span>
+                            <input type="email" name="email">
+                        </label>
+                    </div>
 
-                <div class="form-row">
-                    <label>
-                        <span>Password</span>
-                        <input type="password" name="password">
-                    </label>
-                </div>
+                    <div class="form-row">
+                        <label>
+                            <span>Password</span>
+                            <input type="password" name="password">
+                        </label>
+                    </div>
 
-                <div style="display:inline-flex;color:red;" class="form-row">
                     {% if form.errors %}
-                        <h6>username or password not correct!</h6>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
                     {% endif %}
+
+                    <div class="form-row">
+                        <button type="submit">Sign in</button>
+                    </div>
+
                 </div>
 
-                <div class="form-row">
-                    <button type="submit">Sign in</button>
-                </div>
+                <a href="{% url 'sign up user' %}" class="form-create-an-account">Create an account &rarr;</a>
 
             </div>
 
-            <a href="{% url 'sign up user' %}" class="form-create-an-account">Create an account &rarr;</a>
 
-        </div>
-
-
-    </form>
+        </form>
     </header>
 {% endblock %}
 

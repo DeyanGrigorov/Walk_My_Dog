@@ -59,11 +59,22 @@ class SignUpForm(UserCreationForm):
         model = WalkMyDogUser
         fields = ("first_name", "last_name", "email", "city", "category", "password1", "password2")
 
+    def clean(self):
+        super(SignUpForm, self).clean()
+        first_name = self.cleaned_data.get('first_name')
+        last_name = self.cleaned_data.get('last_name')
+
+        if len(first_name) < 2:
+            self._errors['first_name'] = self.error_class(['Minimum 2 characters required for first name'])
+        if len(last_name) < 4:
+            self._errors['last_name'] = self.error_class(['Minimum 4 characters required for last name'])
+
+        return self.cleaned_data
+
 
 class LoginForm(forms.Form):
     user = None
     email = forms.EmailField(
-
     )
     password = forms.CharField(
         widget=forms.PasswordInput(),
@@ -71,8 +82,8 @@ class LoginForm(forms.Form):
 
     def clean_password(self):
         self.user = authenticate(
-            email=self.cleaned_data['email'],
-            password=self.cleaned_data['password'],
+            email=self.cleaned_data.get('email'),
+            password=self.cleaned_data.get('password'),
         )
 
         if not self.user:

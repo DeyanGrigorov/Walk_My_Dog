@@ -1,10 +1,7 @@
-from django.db import transaction
 from django.contrib.auth import logout, login
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from walk_my_dog.walkmydog_auth.forms import LoginForm, SignUpForm
 
-from django.contrib import messages
+from walk_my_dog.walkmydog_auth.forms import LoginForm, SignUpForm
 
 
 def sign_in_user(request):
@@ -44,4 +41,3 @@ def sign_up_user(request):
 def sign_out_user(request):
     logout(request)
     return redirect('landing page')
-
