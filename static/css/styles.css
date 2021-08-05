@@ -11960,7 +11960,6 @@ button {
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 100%;
   font-size: 18px;
 }
 
@@ -11977,8 +11976,8 @@ button:hover, a:hover {
 
 .avatar {
   vertical-align: middle;
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
 }
 

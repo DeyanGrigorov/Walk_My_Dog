@@ -1,4 +1,5 @@
 {% extends 'base/Index.html' %}
+{% load static %}
 {% block content %}
      <header class="masthead" style="background-image: url('/static/assets/silouete.jpg')">
 {% endblock %}
@@ -11,7 +12,11 @@
             </div>
             <div class="site-heading">
                 {% if not request.user.is_authenticated %}
-                    <span class="subheading"> <a href="{% url 'sign up user' %}" class="btn btn-primary">Get started</a></span>
+                     <span class="subheading">
+                            <a href="{% url 'sign up user' %}" class="btn btn-primary">Get started</a>
+                            <a>or</a>
+                            <a href="{% url 'sign in user' %}" class="btn btn-primary">Sign in here</a>
+                        </span>
                 {% else %}
                     <h2>Find what you seek</h2>
                     <a href="{% url 'list profiles owners' %}" class="btn btn-primary">Dog owners</a>

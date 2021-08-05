@@ -8,7 +8,8 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Walk My Dog</title>
-    <link rel="icon" type="image/x-icon" href="static/assets/dog_icon.ico"/>
+    {#    <link rel="icon" type="image/x-icon" href="static/assets/dog_icon.ico"/>#}
+    <link rel="shortcut icon" href="{% static 'assets/dog_icon.ico' %}"/>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -71,6 +72,21 @@
                     <h1>Good People For Your Dog</h1>
                     <span class="subheading">The Good App</span>
                 </div>
+                <div class="site-heading">
+                    {% if not request.user.is_authenticated %}
+                        <span class="subheading">
+                            <a href="{% url 'sign up user' %}" class="btn btn-primary">Get started</a>
+                            <a>or</a>
+                            <a href="{% url 'sign in user' %}" class="btn btn-primary">Sign in here</a>
+                        </span>
+
+                    {% else %}
+                        <h2>Find what you seek</h2>
+                        <a href="{% url 'list profiles owners' %}" class="btn btn-primary">Dog owners</a>
+                        <a href="{% url 'list profiles sitters' %}" class="btn btn-primary">Dog Sitters</a>
+                        </div>
+                    {% endif %}
+
             </div>
         </div>
         </div>
