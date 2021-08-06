@@ -1,8 +1,5 @@
-from django.shortcuts import render
-
-from walk_my_dog.profile_auth.models import Profile
+from django.views.generic import TemplateView
 
 
-def landing_page(request):
-
-    return render(request, 'base/Index.html')
+class IndexView(TemplateView):
+    template_name = 'base/Index.html'

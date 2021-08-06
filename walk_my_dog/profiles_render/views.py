@@ -40,7 +40,7 @@ def profile_details(request, pk):
 
     context = {
         'profile': profile,
-        'is_liked': like_object_by_user is  None,
+        'is_liked': like_object_by_user is None,
     }
     return render(request, 'profiles/list_profile_details.html', context)
 

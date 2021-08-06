@@ -1,7 +1,7 @@
 from django.urls import path
 
-from walk_my_dog.info.views import how_it_works
+from walk_my_dog.info.views import HowItWorksView
 
 urlpatterns = (
-    path('how_it_works/', how_it_works, name='how it works'),
+    path('how_it_works/', HowItWorksView.as_view(), name='how it works'),
 )

@@ -1,5 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def how_it_works(request):
-    return render(request, 'info/how_it_works.html')
+class HowItWorksView(TemplateView):
+    template_name = 'info/how_it_works.html'

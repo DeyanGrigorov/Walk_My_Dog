@@ -1,7 +1,7 @@
 from django.urls import path
 
-from walk_my_dog.common.views import landing_page
+from walk_my_dog.common.views import IndexView
 
 urlpatterns = (
-    path('', landing_page, name='landing page'),
+    path('', IndexView.as_view(), name='landing page'),
 )
