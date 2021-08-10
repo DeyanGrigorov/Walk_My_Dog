@@ -12,6 +12,13 @@ class SignUpForm(UserCreationForm):
         self.fields['password1'].label = "password"
         self.fields['password2'].label = "confirm password"
 
+    email = forms.CharField(
+        widget=forms.EmailInput
+            (
+            attrs={'class': "form-row"}
+        )
+    )
+
     first_name = forms.CharField(
         widget=forms.TextInput
             (
@@ -27,13 +34,7 @@ class SignUpForm(UserCreationForm):
             attrs={'class': "form-row"}
         )
     )
-    email = forms.CharField(
-        widget=forms.EmailInput
-            (
-            attrs={'class': "form-row"}
-        )
-    )
-    #
+
     city = forms.CharField(
         widget=forms.TextInput
             (
@@ -57,7 +58,7 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = WalkMyDogUser
-        fields = ("first_name", "last_name", "email", "city", "category", "password1", "password2")
+        fields = ("email", "first_name", "last_name", "city", "category", "password1", "password2")
 
     def clean(self):
         super(SignUpForm, self).clean()

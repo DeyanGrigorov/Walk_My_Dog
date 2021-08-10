@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-# Create your models here
+
 from walk_my_dog.profile_auth.models import Profile
 
 UserModel = get_user_model()
