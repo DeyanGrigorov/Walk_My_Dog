@@ -14,6 +14,7 @@ def list_profiles_owners(request):
 
     context = {
         'page': page,
+        'profiles': dog_owners
     }
 
     return render(request, 'profiles/list_profiles_owners.html', context)
@@ -27,6 +28,7 @@ def list_profiles_sitters(request):
 
     context = {
         'page': page,
+        'profiles': dog_sitters
     }
 
     return render(request, 'profiles/list_profiles_sitters.html', context)
@@ -40,7 +42,7 @@ def profile_details(request, pk):
 
     context = {
         'profile': profile,
-        'is_liked': like_object_by_user is None,
+        'is_liked': like_object_by_user is not None,
     }
     return render(request, 'profiles/list_profile_details.html', context)
 

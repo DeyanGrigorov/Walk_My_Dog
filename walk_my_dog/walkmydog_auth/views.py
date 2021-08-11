@@ -24,21 +24,6 @@ def sign_in_user(request):
     return render(request, 'accounts/sign_in.html', context)
 
 
-# def sign_up_user(request):
-#     if request.method == 'POST':
-#         form = SignUpForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             return redirect('update profile')
-#     else:
-#         form = SignUpForm
-#     context = {
-#         'form': form
-#     }
-#
-#     return render(request, 'accounts/sign_up.html', context)
-
 class SignUpView(CreateView):
     form_class = SignUpForm
     template_name = 'accounts/sign_up.html'
