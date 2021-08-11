@@ -7,9 +7,11 @@ class ProfileDetailsTest(WalkMyDogTestCase):
 
     def test_getDetails_whenLoggedInUser_UserShouldGetDetails(self):
         self.client.force_login(self.user)
-
         response = self.client.get(reverse('list profile details', args=[1]))
 
+        profile = response.context['profile']
+
+        self.assertTrue(profile)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(self.user.id, response.context['profile'].user_id)
-
+        pass
