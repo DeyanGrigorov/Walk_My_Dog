@@ -50,9 +50,9 @@
                     <i>{{ profile.first_name }} {{ profile.last_name }} have {{ profile.likes_count }} hearts, will you give her/him more: </i>
                     <a href="{% url 'like profile' profile.pk %}">
                         {% if is_liked %}
-                            <i class="far fa-heart" aria-hidden="true" style="color: red"></i>
-                        {% else %}
                             <i class="fas fa-heart" aria-hidden="true" style="color: red"></i>
+                        {% else %}
+                            <i class="far fa-heart" aria-hidden="true" style="color: red"></i>
                         {% endif %}
                     </a>
                 </div>
