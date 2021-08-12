@@ -1,0 +1,74 @@
+{% extends 'base/Index.html' %}
+{% load static %}
+{% block content %}
+    <header class="masthead" style="background-image: url('/static/assets/Dog-friend.jpg')">
+{% endblock %}
+{% block header %}
+    <div class="row">
+        {% for profile in object_list %}
+            <div class="col-lg-4">
+                <div class="card-profile">
+                    {% if profile.profile_image %}
+                        <img src="{{ profile.profile_image.url }}" alt="No photo" style="float: left;
+    width:  300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;">
+                    {% else %}
+                        <img src="{% static 'default_image/profile.jpg' %}" alt="No photo" style="float: left;
+    width:  300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;">
+                    {% endif %}
+                    <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
+                    <p class="title">{{ profile.category }}</p>
+                    <p>location: {{ profile.city }}</p>
+                    <p>
+                        <a href="{% url 'list profile details' profile.user_id %}">
+                            <button>Details</button>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+   <div class="text-center" style="padding-bottom: 10px">
+        <form action="{% url 'search' %}" method="get">
+            <input name="q_first_name" type="text" placeholder="Search by Name">
+            <input name="q_category" type="text" placeholder="Dog sitter/Dog owner">
+            <button type="submit">Search</button>
+        </form>
+        </div>
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a class="pagination-action" href="?page=1&q_first_name={{ query_first_name }}&q_category={{ query_category }}">
+                <i class="fas fa-angle-double-left"></i>
+            </a>
+            <a class="pagination-action"
+               href="?page={{ page_obj.previous_page_number }}&q_first_name={{ query_first_name }}&q_category={{ query_category }}">
+                <i class="fas fa-angle-left"></i>
+            </a>
+        {% endif %}
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <span class="pagination-number pagination-current">{{ num }}</span>
+            {% else %}
+                <a class="pagination-number" href="?page={{ num }}&q_first_name={{ query_first_name }}&q_category={{ query_category }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a class="pagination-action"
+               href="?page={{ page_obj.next_page_number }}&q_first_name={{ query_first_name }}&q_category={{ query_category }}">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            <a class="pagination-action" href="?page={{ page_obj.paginator.num_pages }}&q_first_name={{ query_first_name }}&q_category={{ query_category }}">
+                <i class="fas fa-angle-double-right"></i>
+            </a>
+            </div>
+
+        {% endif %}
+{% endblock %}
+{% block main-content %}
+{% endblock %}
+</header>
