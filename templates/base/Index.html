@@ -23,6 +23,7 @@
 </head>
 <body>
 <!-- Navigation-->
+{% block nav %}
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="{% url 'landing page' %}">Walk My Dog</a>
@@ -60,6 +61,7 @@
         </div>
     </div>
 </nav>
+{% endblock %}
 <!-- Page Header-->
 {% block content %}
     <header class="masthead" style="background-image: url('/static/assets/home_image.jpg')">
