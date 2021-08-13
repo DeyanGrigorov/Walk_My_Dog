@@ -73,16 +73,17 @@ class SearchResultsView(ListView):
         context = super().get_context_data(**kwargs)
         context['query_first_name'] = self.request.GET.get('q_first_name')
         context['query_category'] = self.request.GET.get('q_category')
+        context['query_city'] = self.request.GET.get('q_city')
         return context
 
     def get_queryset(self):
         query_first_name = self.request.GET.get('q_first_name')
         query_category = self.request.GET.get('q_category')
+        query_city = self.request.GET.get('q_city')
 
         object_list = Profile.objects.filter(
-            Q(first_name__icontains=query_first_name), Q(category__icontains=query_category)
+            Q(first_name__icontains=query_first_name), Q(category__icontains=query_category),
+            Q(city__icontains=query_city)
         ).order_by('user_id')
 
         return object_list
-
-

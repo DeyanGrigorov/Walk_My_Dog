@@ -7,6 +7,7 @@ UserModel = get_user_model()
 
 @admin.register(UserModel)
 class WalkMyDogUserAdmin(UserAdmin):
+    readonly_fields = ('date_created', 'first_name', 'last_name', 'city',)
     list_display = ('email', 'is_staff', 'category')
     list_filter = ('is_staff', 'is_superuser', 'groups')
     search_fields = ('email',)
@@ -23,8 +24,6 @@ class WalkMyDogUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'category'),
+            'fields': ('email', 'first_name', 'last_name', 'category', 'city', 'password1', 'password2'),
         }),
     )
-
-    readonly_fields = ('date_created', 'first_name', 'last_name', 'city','category')
