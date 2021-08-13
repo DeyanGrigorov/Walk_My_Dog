@@ -1,14 +1,12 @@
 {% extends 'base/Index.html' %}
 {% load static %}
-{#<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"#}
-{#      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">#}
 {% block content %}
     <header class="masthead" style="background-image: url('/static/assets/Dog-friend.jpg')">
 {% endblock %}
 {% block header %}
     {% if page %}
         <div class="text-center" style="padding-bottom: 40px">
-        <h1>All Dog Owners Profiles</h1>
+            <h1>All Dog Owners Profiles</h1>
         </div>
         <div class="row">
         {% for dogowner in page.object_list %}
@@ -41,13 +39,16 @@
     {% else %}
         <h1 class='text-center'>NO PROFILES</h1>
     {% endif %}
-       <div class="text-center" style="padding-bottom: 10px">
+
+    <div class="text-center" style="padding-bottom: 10px">
         <form action="{% url 'search' %}" method="get">
-            <input name="q_first_name" type="text" placeholder="Search by Name">
+            <input name="q_first_name" type="text" placeholder="First Name">
             <input name="q_category" type="text" placeholder="Dog sitter/Dog owner">
+            <input name="q_city" type="text" placeholder="City">
             <button type="submit">Search</button>
         </form>
-        </div>
+    </div>
+
 
     <div class="pagination">
         {% if page.has_previous %}
