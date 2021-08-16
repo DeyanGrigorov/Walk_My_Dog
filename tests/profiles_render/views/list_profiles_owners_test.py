@@ -23,4 +23,3 @@ class ProfileOwnersList(WalkMyDogTestCase):
         self.assertListEqual(profiles, list(response.context['profiles']))
 
 
-    # def test_getNoOwnersList_whenLoggedInUser_ShouldSeeNothing(self):

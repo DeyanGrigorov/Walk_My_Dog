@@ -40,10 +40,6 @@ class WalkMyDogUser(AbstractBaseUser, PermissionsMixin):
         unique=True,
     )
 
-    # age = models.IntegerField(null=True, blank=True)
-    #
-    # phone_number = models.IntegerField(null=True, blank=True)
-
     is_staff = models.BooleanField(
         default=False,
     )

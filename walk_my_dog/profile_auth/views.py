@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 from django.shortcuts import render, redirect
 from walk_my_dog.profile_auth.forms import ProfileForm
 from walk_my_dog.walkmydog_auth.forms import UserForm
@@ -31,4 +32,3 @@ def update_profile(request):
 def delete_profile(request):
     WalkMyDogUser.objects.get(id=request.user.id).delete()
     return redirect('landing page')
-

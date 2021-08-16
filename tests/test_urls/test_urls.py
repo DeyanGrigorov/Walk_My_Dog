@@ -4,7 +4,8 @@ from django.urls import reverse, resolve
 from walk_my_dog.common.views import IndexView
 from walk_my_dog.info.views import HowItWorksView
 from walk_my_dog.profile_auth.views import update_profile, delete_profile
-from walk_my_dog.profiles_render.views import list_profiles_owners, list_profiles_sitters, profile_details, like_profile
+from walk_my_dog.profiles_render.views import list_profiles_owners, list_profiles_sitters, profile_details, \
+    like_profile, SearchResultsView
 from walk_my_dog.walkmydog_auth.views import sign_in_user, sign_out_user, SignUpView
 
 
@@ -54,4 +55,6 @@ class TestUrls(SimpleTestCase):
         url = reverse('sign up user')
         self.assertEquals(resolve(url).func.view_class, SignUpView)
 
-
+    def test_search_view_url_is_resolved(self):
+        url = reverse('search')
+        self.assertEquals(resolve(url).func.view_class, SearchResultsView)
