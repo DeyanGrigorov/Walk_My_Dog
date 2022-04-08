@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+import django_on_heroku
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -144,3 +147,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media files'
 
 AUTH_USER_MODEL = 'walkmydog_auth.WalkMyDogUser'
+
+django_on_heroku.settings(locals())
+
