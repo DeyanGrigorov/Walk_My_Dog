@@ -1,2 +1,2 @@
-web: gunicorn walk_my_dog.wsgi
+web: gunicorn walking-dogs.wsgi
 
