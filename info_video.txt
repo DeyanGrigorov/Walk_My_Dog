@@ -1,1 +1,1 @@
-9:35 min video youtube deplyment heroku
+9:35 min video youtube deployment heroku

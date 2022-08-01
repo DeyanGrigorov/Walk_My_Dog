@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'walk_my_dog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'walkmydog',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
+        'NAME': 'd9bu8lhs1rf86m',
+        'USER': 'zrfwpabbdnwzeo',
+        'PASSWORD': '1096241d495be2db13efcb54bc83f1dbd8b8ec6a53327193c778fa64f9852eff',
+        'HOST': 'ec2-3-224-125-117.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
